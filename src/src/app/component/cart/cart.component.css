@@ -1,0 +1,17 @@
+.card{
+    height:60vh;
+    margin-top: 20px;
+    padding:10px;
+}
+.center img{
+    height: 100px;
+    width:100px;
+    margin:20px 0px; 
+}
+.center{
+    position: absolute;
+    text-align: center;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}

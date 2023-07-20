@@ -1,0 +1,23 @@
+.responsive{
+    height:50px;
+    width:50px;
+}
+.form-control{
+    border-radius:5px ;
+    width:550px;
+    margin-left: 30px;
+
+}
+.search-icon{
+    position: absolute;
+    top:27%;
+    right: 45%;
+    height: 20px;
+    width: 20px;
+}
+img{
+    text-align: center;
+    height: 35px;
+    width:35px;
+   
+}
