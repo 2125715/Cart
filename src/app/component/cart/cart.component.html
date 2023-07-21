@@ -1,27 +1,99 @@
 <ng-container *ngIf="true">
-    <div class="cart-table">
-        <div class="cart-product">
-            <table class="table table-responsive">
-                <thead>
-                    <tr>
-                        <th>S.no</th>
-                    </tr>
-                </thead>
-            </table>
+
+    <div class="container">
+
+        <div class="card-table">
+
+            <div class="cart-product">
+
+                <table class="table table-responsive">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Sr.No</th>
+
+                            <th>Product Name</th>
+
+                            <th>Product Image</th>
+
+                            <th>Description</th>
+
+                            <th>Price</th>
+
+                            <th>Quantity</th>
+
+                            <th>Total</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let cartItem of cartItems">
+
+                            <td>1</td>
+
+                            <td>{{cartItem.title}}</td>
+                            <td>{{cartItem.imagePath}}</td>
+                            <td>{{cartItem.desc}}</td>
+                            <td>{{cartItem.price}}</td>
+
+                          
+
+                            <td>2</td>
+
+                            <td>{{cartItem.price *2}}</td>
+
+                            <td>
+
+                                <button class="btn btn-danger">Delete</button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+
+
+                </table>
+
+            </div>
+
         </div>
+
     </div>
+
 </ng-container>
 
 <ng-container *ngIf="false">
-<div class="container">
-    <div class="card">
-        <h4>My Cart</h4>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h4>My Cart</h4>
+
+        </div>
+
+        <div class="center">
+
+            <img src="assets\images\empty_cart.png" alt="">
+
+            <h5>Cart is empty!</h5>
+
+            <p>Add items to cart </p>
+
+            <button class="btn btn-primary">shop now </button>
+
+        </div>
+
     </div>
-    <div class="center">
-        <img  src="assets\images\empty_cart.png" alt="">
-        <h5>Cart is empty!</h5>
-        <p>Add items to cart </p>
-        <button class="btn btn-primary">shop now </button>
-    </div>
-</div>
+
 </ng-container>

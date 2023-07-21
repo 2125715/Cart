@@ -1,47 +1,50 @@
-<div class="cart-top container-fluid">
-    <div class="container d-flex">
-        <div class="item">
-            <a>
-                <img src="assets\images\Allproducts.webp" alt="AllProducts" >&nbsp;
-                <h6>All Products</h6>&nbsp;
+ <div class="container">
+
+     <div class=" filters   row mt-4">
+         <div class="item col">
+             <a>
+                 <img class="img-fluid mt-3" src="assets\images\Allproducts.webp" alt="AllProducts" >&nbsp;
+                 <h6 class="mt-2">All Products</h6>&nbsp;
+            </a>
+            </div>
+            <div class="item col">
+                <a>
+                    <img class="img-fluid mt-3" src="assets\images\mobiles.jpg" alt="mobiles" >&nbsp;
+                    <h6 class="mt-2">Mobiles</h6>&nbsp;
+                </a>
+            </div>
+            <div class="item col">
+                <a>
+                    <img class="img-fluid mt-3" src="assets\images\jewellery.webp" alt="jewellery" >
+                    <h6 class="mt-2">Jewellery</h6>
             </a>
         </div>
-        <div class="item">
+        <div class="item col">
             <a>
-                <img src="assets\images\mobiles.jpg" alt="mobiles" >&nbsp;
-                <h6>Mobiles</h6>&nbsp;
+                <img class="img-fluid mt-3" src="assets\images\clothing.jpg" alt="clothing" >
+                <h6 class="mt-2">Clothing</h6>
             </a>
         </div>
-        <div class="item">
+        <div class="item col">
             <a>
-                <img src="assets\images\jewellery.webp" alt="jewellery" >
-                <h6>Jewellery</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a>
-                <img src="assets\images\clothing.jpg" alt="clothing" >
-                <h6>Clothing</h6>
-            </a>
-        </div>
-        <div class="item">
-            <a>
-                <img src="assets\images\grocery.webp" alt="Grocery" >&nbsp;
-                <h6>Grocery</h6>&nbsp;
+                <img class="img-fluid mt-3" src="assets\images\grocery.webp" alt="Grocery" >&nbsp;
+                <h6 class="mt-2">Grocery</h6>&nbsp;
             </a>
         </div>
     </div>
+    
 </div>
 
-<div class="container">
+<div class="container ">
+    <hr>
     <div class="row">
         <ng-container *ngFor="let item of productList">
-            <div class="card col-md-3">
-                <img src="{{item.image}}" alt="">
-                <h5 style="white-space: nowrap;overflow:hidden;text-overflow: ellipsis; max-width:100ch">{{item.title}}</h5>
-                <p style="white-space: nowrap;overflow:hidden;text-overflow: ellipsis; max-width:100ch">{{item.description}}</p>
-                <p ><strong >Price:</strong>$ {{item.price}}</p>
-                <button style="background-color:aqua">Add to Cart</button>
+            <div class="card col-md-3 p-3 ">
+                <img class="img-fluid my-3 " src="{{item.image}}" alt="">
+                <h5 class="blockquote" style="white-space: nowrap;overflow:hidden;text-overflow: ellipsis; max-width:100ch">{{item.title}}</h5>
+                <p class="blockquote-footer" style="white-space: nowrap;overflow:hidden;text-overflow: ellipsis; max-width:100ch">{{item.description}}</p>
+                <p ><strong >Price : </strong>$ {{item.price}}</p>
+                <button class="btn btn-outline-success" (click)="addToCart(item)" >Add to Cart</button>
             </div>
         </ng-container>
     </div>
