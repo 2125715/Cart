@@ -23,8 +23,15 @@
                             <td><img style="width:120px;" src="{{item.image}}"></td>
                             <td style="width:25%;">{{item.description}}</td>
                             <td style="width:12%;">{{item.price}}</td>
-                            <td style="width:12%;">{{item.quantity}}</td>
-                            <td style="width:12%;">{{item.total}}</td>
+                            <td style="width:12%;">
+                                <div>
+                                    <span><button (click)="dec(item)">-</button></span>
+                                    <input type="text" id="quantity" style="width:50px;text-align:center"
+                                        [(ngModel)]="item.quantity" #quantity="ngModel">
+                                    <span><button (click)="inc(item)">+</button></span>
+                                </div>
+                            </td>
+                            <td style="width:12%;">{{item.price * item.quantity}}</td>
                             <td>
                                 <button (click)="removeItem(item)" class="btn btn-danger">Remove</button>
                             </td>
@@ -33,11 +40,12 @@
                             <td colspan="4"></td>
                             <td><button (click)=emptyCart() class="btn btn-danger">Empty Cart</button></td>
                             <td><button routerLink="/products" class="btn btn-primary">Shop more</button></td>
-                            <td><button class="btn btn-success">Check out</button></td>
-                            <td><strong>Grand Total:${{grandTotal}}</strong></td>
+                            <td><button routerLink="/checkout" class="btn btn-success">Check out</button></td>
+                            <td><strong>Grand Total:{{total|currency}}</strong></td>
                         </tr>
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

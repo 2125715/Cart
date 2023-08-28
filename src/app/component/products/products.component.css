@@ -6,10 +6,16 @@
     border-style: none;
     border: 1px solid;
 }
-
 .item img {
     height: 70px;
     width: 50px;
+
+    transition: 0.3s ease-in-out;
+}
+
+.item img:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.1);
 }
 
 .item {
@@ -19,10 +25,6 @@
 
 .item a:hover {
     color: blue;
-}
-
-.container {
-    margin-left: 120px;
 }
 
 .card {
@@ -40,4 +42,30 @@
 .card img:hover {
     transition: 0.5s ease-in-out;
     transform: scale(1.1);
+}
+
+h5 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100ch;
+}
+
+h5:hover {
+    overflow: visible;
+    white-space: normal;
+    height: auto;
+}
+
+p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100ch;
+}
+
+p:hover {
+    overflow: visible;
+    white-space: normal;
+    height: auto;
 }

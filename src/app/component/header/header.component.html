@@ -5,13 +5,13 @@
                 <img src="assets\images\shippingicon.png" class="responsive" alt="icon">&nbsp;
                 <strong style="font-size:30px;">EKart</strong>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="search products">
+                    <input type="text" class="form-control"[(ngModel)]="searchTerm" (keyup)="search($event)"  placeholder="search products">
                 </div>
                 <span>
                     <img src="assets\images\download.png" class="search-icon" alt="search">
                 </span>
             </div>
-            <button routerLink="/cart" class="btn btn-primary">
+            <button title="Cart" routerLink="/cart" class="btn btn-primary">
                 <img src="assets\images\cartlogo.png" alt="cart">
                 <span style="font-size: 9px;" class="badge bg-danger">{{totalItem}}</span>
             </button>

@@ -1,31 +1,37 @@
 <div class="cart-top container-responsive">
     <div class="container d-flex">
         <div class="item">
-            <a>
+            <a (click)="filter('')">
                 <img src="assets\images\Allproducts.webp" alt="AllProducts">&nbsp;
                 <h6>All Products</h6>&nbsp;
             </a>
         </div>
         <div class="item">
-            <a>
-                <img src="assets\images\mobiles.jpg" alt="mobiles">&nbsp;
-                <h6>Mobiles</h6>&nbsp;
+            <a (click)="filter('electronics')">
+                <img src="assets\images\electronics.jpg" alt="mobiles">&nbsp;
+                <h6>Electronics</h6>&nbsp;
             </a>
         </div>
         <div class="item">
-            <a>
+            <a (click)="filter('jewelery')">
                 <img src="assets\images\jewellery.webp" alt="jewellery">
                 <h6>Jewellery</h6>
             </a>
         </div>
         <div class="item">
-            <a>
-                <img src="assets\images\clothing.jpg" alt="clothing">
-                <h6>Clothing</h6>
+            <a (click)="filter('men')">
+                <img src="assets\images\men's clothing.jpg" alt="clothing">
+                <h6>Men's Clothing</h6>
             </a>
         </div>
         <div class="item">
-            <a>
+            <a (click)="filter('women')">
+                <img style="width:50px;" src="assets\images\women's clothing.jpg" alt="clothing">
+                <h6>Women's Clothing</h6>
+            </a>
+        </div>
+        <div class="item">
+            <a (click)="filter('grocery')">
                 <img src="assets\images\grocery.webp" alt="Grocery">&nbsp;
                 <h6>Grocery</h6>&nbsp;
             </a>
@@ -35,16 +41,19 @@
 
 <div class="container">
     <div class="row">
-        <ng-container *ngFor="let item of productList">
+        <ng-container *ngFor="let item of filterCategory| filter:searchKey:'title'">
             <div class="card col-md-3">
                 <img src="{{item.image}}" alt="">
-                <h5 style="white-space: nowrap;overflow:hidden;text-overflow: ellipsis; max-width:100ch">{{item.title}}
-                </h5>
-                <p style="white-space: nowrap;overflow:hidden;text-overflow: ellipsis; max-width:100ch">
-                    {{item.description}}</p>
-                <p><strong>Price:</strong>$ {{item.price}}</p>
-                <button class="btn btn-primary" (click)=addtocart(item)>Add to Cart</button>
+                <h5>{{item.title}}</h5>
+                <p>{{item.description}}</p>
+                <p><strong>Price:</strong>{{item.price | currency}}</p>
+                <button class="btn btn-primary" title="Add to cart" (click)="addtocart(item)">Add to Cart</button>
             </div>
         </ng-container>
     </div>
 </div>
+
+<!-- 
+<div>
+    <button type="button" (click)="InsertData()">INSERT DATA</button>
+</div> -->
