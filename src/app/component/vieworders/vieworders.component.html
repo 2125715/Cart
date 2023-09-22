@@ -1,0 +1,80 @@
+<div>
+    <header>
+        <div class="navbar " style="background-color:#FEBD69;position: fixed;width:100%;z-index: 1;top: 0;left:0;">
+            <div class="navbar-brand align-item-center d-flex">
+                <img style=" text-align: center;
+                height: 50px;
+                width: 50px;" src="assets\images\shippingicon.png" class="responsive" alt="icon">&nbsp;
+                <strong routerLink="/products" style="font-size:30px;">EKart</strong>
+            </div>
+            <h4 style="text-align:center;"> <strong>Orders</strong></h4>
+            <form class="d-flex">
+                <button class="btn btn-danger" [disabled]="isDisableMethod()" (click)="cancelOrder()">Cancel
+                    order</button>&nbsp;
+                <button class="btn btn-primary" routerLink="/products">Home</button>&nbsp;
+            </form>
+        </div>
+    </header>
+</div>
+
+<ng-container *ngIf="products.length===0"> 
+    <h3 style="margin-top: 79px;position: relative; text-align: center;">No orders to display</h3>
+    <p style="text-align:center"><strong>Click &nbsp;<a href="/products" title="products">here</a>&nbsp;to shop</strong>
+    </p>
+</ng-container> 
+ <ng-container *ngIf="products.length !=0">
+
+    <div *ngIf="!cancel">
+        <div class="container-fluid" style="margin-top: 79px;position: relative;">
+            <img style=" height: 100px;
+    width: 100px;
+    margin-left: 520px;" src="assets\images\ordersuccess.png" alt="order success">
+            <h3 style="text-align:center">Order Placed Successfully </h3>
+            <br>
+            <h3><strong>OrderDetails</strong></h3>
+        </div>
+        <div style="margin-top:5px;margin-left:10px;">
+            <table class="table table-responsive"
+                style="height:100%; width:100%;  top: 0; bottom: 0; left: 0; right: 0;">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Product Name</th>
+                        <th>Product Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let item of products;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.title}}</td>
+                    <td><img style="height:100px;width:100px" src="{{item.image}}" alt="product image"></td>
+                    <td>{{item.price}}</td>
+                    <td style="text-align:center">{{item.quantity}}</td>
+                    <td>{{item.price * item.quantity}}</td>
+                    <td><button (click)="removeOrder(item)" class="btn btn-danger">Remove</button></td>
+                </tr>
+                <tr>
+                    <td colspan="7"></td>
+                    <td><strong> Total Cost:{{total + deliveryCharges| currency:"INR":"symbol-narrow"}}(with delivery
+                            charges)</strong></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div *ngIf="cancel">
+        <div class="container-fluid" style="margin-top: 79px;position: relative;">
+            <img style=" height: 100px;
+        width: 100px;
+        margin-left: 540px;" src="assets\images\ordercancel.png" alt="order Cancelled">
+            <p style="text-align:center;"><strong>Order has been cancelled</strong></p>
+            <p style="text-align:center;">Click&nbsp;<a href="/products" title="cart">here</a>&nbsp;to continue shopping
+            </p>
+        </div>
+
+
+    </div>
+</ng-container> 

@@ -1,0 +1,58 @@
+<div>
+    <header>
+        <div class="navbar " style="background-color:#FEBD69;position: fixed;width:100%;z-index: 1;top: 0;left:0;">
+            <div class="navbar-brand align-item-center d-flex">
+                <img style=" text-align: center;
+                height: 50px;
+                width: 50px;" src="assets\images\shippingicon.png" class="responsive" alt="icon">&nbsp;
+                <strong routerLink="/products" style="font-size:30px;">EKart</strong>
+            </div>
+        </div>
+    </header>
+</div>
+
+<div class="" style="margin-top:79px">
+    <div class="container">
+        <div class="">
+            <h2 style="text-align:left">Login</h2>
+            <hr>
+            <form (ngSubmit)="login()" #loginForm="ngForm" >
+
+                <div class="form-group">
+                    <label for="username">UserName</label>
+                    <input type="text" style="width:500px" class="form-control" id="username"
+                        placeholder="enter user name" name="username" [(ngModel)]="username" required>
+
+                    <div
+                        *ngIf="loginForm.controls['username']?.invalid && loginForm.controls['username']?.dirty || loginForm.controls['username']?.touched ">
+                        <div style="color:red" *ngIf="loginForm.controls['username']?.errors?.['required']">User name is
+                            required</div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" style="width:500px" id="password" class="form-control"
+                        placeholder="enter password" name="password" [(ngModel)]="password" required>
+
+                    <div
+                        *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.dirty || loginForm.controls['password']?.touched ">
+                        <div style="color:red" *ngIf="loginForm.controls['password']?.errors?.['required']">Password is
+                            required</div>
+                    </div>
+                </div>
+                <div>
+                    <p>New User ?&nbsp;<a href="/register">Click</a>&nbsp;to register</p>
+                </div>
+
+
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login </button>
+
+
+            </form>
+            <br>
+            <div *ngIf="Message" class="alert alert-info">{{Message}}</div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-<div class="cart-top container-responsive">
+<app-header style="position: fixed;width:100%;z-index: 1;top: 0;left:0;"></app-header>
+<div style="margin-top: 79px;position: relative;background-color:aliceblue;" class="cart-top container-responsive">
     <div class="container d-flex">
         <div class="item">
             <a (click)="filter('')">
@@ -36,24 +37,39 @@
                 <h6>Grocery</h6>&nbsp;
             </a>
         </div>
+        
+        
+        
     </div>
 </div>
 
-<div class="container">
+<div style="background-color: aliceblue;" class="container">
     <div class="row">
         <ng-container *ngFor="let item of filterCategory| filter:searchKey:'title'">
-            <div class="card col-md-3">
-                <img src="{{item.image}}" alt="">
+            <div style="background-color:aliceblue;margin-left: 60px;" class="card col-md-3">
+                <img style="margin-left: 30px;" src="{{item.image}}" alt="Item image">
                 <h5>{{item.title}}</h5>
                 <p>{{item.description}}</p>
-                <p><strong>Price:</strong>{{item.price | currency}}</p>
-                <button class="btn btn-primary" title="Add to cart" (click)="addtocart(item)">Add to Cart</button>
+                <p><strong>Price:</strong>{{item.price |currency: "INR":"symbol-narrow"}}</p>
+                <button *ngIf="!item.addedToCart" class="btn btn-secondary" title="Add to cart" data-toggle="modal"
+                    data-target="#myModal" (click)="addtocart(item)">Add to Cart</button>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p style="text-align:center"><strong>Item added to cart</strong></p>
+                            </div>
+                            <!-- <div class="modal-footer"> -->
+                            <button type="button" style="text-align:center;" class="btn btn-warning"
+                                data-dismiss="modal">Ok</button>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+                <button *ngIf="item.addedToCart" class="btn btn-info" title="Go To Cart" (click)="goToCart()">Go To
+                    Cart</button>
             </div>
         </ng-container>
     </div>
 </div>
 
-<!-- 
-<div>
-    <button type="button" (click)="InsertData()">INSERT DATA</button>
-</div> -->

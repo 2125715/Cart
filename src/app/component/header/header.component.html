@@ -1,19 +1,24 @@
 <div>
     <header>
-        <div class="navbar navbar-dark bg-primary">
+        <div class="navbar " style="background-color:#FEBD69">
             <div class="navbar-brand align-item-center d-flex">
                 <img src="assets\images\shippingicon.png" class="responsive" alt="icon">&nbsp;
-                <strong style="font-size:30px;">EKart</strong>
+                <strong routerLink="/products" style="font-size:30px;">EKart</strong>
                 <div class="form-group">
-                    <input type="text" class="form-control"[(ngModel)]="searchTerm" (keyup)="search($event)"  placeholder="search products">
+                    <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)"
+                        placeholder="search products">
                 </div>
                 <span>
                     <img src="assets\images\download.png" class="search-icon" alt="search">
                 </span>
+                
             </div>
-            <button title="Cart" routerLink="/cart" class="btn btn-primary">
-                <img src="assets\images\cartlogo.png" alt="cart">
-                <span style="font-size: 9px;" class="badge bg-danger">{{totalItem}}</span>
+            <button  class="btn btn-primary" routerLink="/addProductForm">Add Product</button>
+            <button  class="btn btn-primary" (click)="logout()">Logout</button>
+
+            <button title="Cart" routerLink="/cart" class="btn btn">
+                <img src="assets\images\cartlogo1.png" alt="cart">
+                <span style="font-size: 9px;" class="badge bg-danger">{{totalCartItems}}</span>
             </button>
         </div>
     </header>

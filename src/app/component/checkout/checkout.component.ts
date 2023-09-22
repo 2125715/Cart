@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { CartService } from 'src/app/service/cart.service';
 import { AddressData } from 'src/app/addressdata/address';
@@ -9,12 +9,15 @@ import { AddressData } from 'src/app/addressdata/address';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  @Input()
+  username!: string;
 
   addressdata: AddressData = {
-    name: "",
-    address: "",
-    pincode: "",
-    mobile: ""
+    name: "Ajay",
+    doorno: "1-44-1",
+    address: "Vijayawada",
+    pincode: "521211",
+    mobile: "98765432210"
 
   }
 
@@ -22,7 +25,7 @@ export class CheckoutComponent implements OnInit {
   public totalItem: number = 0;
   public total: number = 0;
   public grandTotal: number = 0;
-  public deliveryCharges: number = 10;
+  public deliveryCharges: number = 99;
   public isdisabled: boolean = true;
 
 
@@ -54,7 +57,7 @@ export class CheckoutComponent implements OnInit {
     console.log(data);
   }
   addAddress() {
-    window.alert("Address added succesfully ..!")
+    window.alert("Address updated succesfully ..!")
   }
 
 

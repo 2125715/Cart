@@ -1,5 +1,23 @@
+<div>
+    <header>
+        <div class="navbar " style="background-color:#FEBD69;position: fixed;width:100%;z-index: 1;top: 0;left:0;">
+            <div class="navbar-brand align-item-center d-flex">
+                <img style=" text-align: center;
+                height: 50px;
+                width: 50px;" src="assets\images\shippingicon.png" class="responsive" alt="icon">&nbsp;
+                <strong routerLink="/products" style="font-size:30px;">EKart</strong>
+            </div>
+            <h4 style="text-align:center;"> <strong>Cart</strong></h4>
+            <form class="d-flex">
+                <button class="btn btn" routerLink="/products"> <img style="  height: 35px;
+                    width: 35px;" src="assets\images\cartlogo1.png" alt="cart">
+                    <span style="font-size: 9px;" class="badge bg-danger">{{totalItemCount}}</span></button>&nbsp;
+            </form>
+        </div>
+    </header>
+</div>
 <ng-container *ngIf="products.length!=0">
-    <div class="container">
+    <div class="container" style="margin-top: 79px;position: relative">
         <div class="card-table">
             <div class="cart-product">
                 <table class="table table-responsive"
@@ -39,9 +57,9 @@
                         <tr>
                             <td colspan="4"></td>
                             <td><button (click)=emptyCart() class="btn btn-danger">Empty Cart</button></td>
-                            <td><button routerLink="/products" class="btn btn-primary">Shop more</button></td>
+                            <td><button routerLink="/products" class="btn btn-info  ">Shop more</button></td>
                             <td><button routerLink="/checkout" class="btn btn-success">Check out</button></td>
-                            <td><strong>Grand Total:{{total|currency}}</strong></td>
+                            <td><strong>Grand Total:{{total|currency:"INR":"symbol-narrow"}}</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,8 +69,8 @@
     </div>
 </ng-container>
 <ng-container *ngIf="products.length==0">
-    <div class="container">
-        <div class="card">
+    <div class="container" style="margin-top: 79px;position: relative">
+        <div style="background-color:aliceblue" class="card">
             <h4>My Cart</h4>
         </div>
         <div class="center">

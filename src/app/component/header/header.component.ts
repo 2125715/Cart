@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 
 @Component({
@@ -7,10 +8,12 @@ import { CartService } from 'src/app/service/cart.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input()
+  username!: string;
 
   public totalItem: number = 0;
   public searchTerm: string = '';
-  constructor(private cartservice: CartService) { }
+  constructor(private cartservice: CartService,private api:ApiService) { }
 
   ngOnInit(): void {
     this.cartservice.getProducts()
@@ -20,8 +23,16 @@ export class HeaderComponent implements OnInit {
   }
   search(event: any) {
     this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
     this.cartservice.search.next(this.searchTerm);
   }
+  get totalCartItems():number{
+    return this.cartservice.gettotalCartItems();
+  }
+  logout() {
+   
+      
+    this.api.logout();
+  
+}
 
 }

@@ -1,74 +1,99 @@
-<div class="checkout">
-    <h1>Checkout</h1>
-    <div class="row">
-        <div class="col-sm-7">
+<div>
+    <header>
+        <div class="navbar " style="background-color:#FEBD69;position: fixed;width:100%;z-index: 1;top: 0;left:0;">
+            <div class="navbar-brand align-item-center d-flex">
+                <img style=" text-align: center;
+                height: 50px;
+                width: 50px;" src="assets\images\shippingicon.png" class="responsive" alt="icon">&nbsp;
+                <strong routerLink="/products" style="font-size:30px;">EKart</strong>
+            </div>
+            <h4 style="text-align:center;"> <strong>CheckOut</strong></h4>
+            <form class="d-flex">
+                <button class="btn btn-primary" routerLink="/products">Home</button>&nbsp;
+            </form>
+        </div>
+    </header>
+</div>
+<div class="row">
+<div class="col-sm-6" style="margin-top: 79px;position: relative">
+    <div style="margin-left:10px">
+        <div  class="container ">
             <h4>Cart Price Details</h4>
-            <h6>Total price of cart items: ${{grandTotal}}</h6>
-            <h6>Delivery charges:${{deliveryCharges}}</h6>
+            <h6 >Total Items Price:&nbsp;<strong >{{grandTotal|currency:"INR":"symbol-narrow"}}</strong> </h6>
+            <h6>Delivery charges:&nbsp;<strong >{{deliveryCharges|currency:"INR":"symbol-narrow"}}</strong></h6>
             <hr>
-            <b>Total Amount:${{total | number:'1.2-2'}}</b> &nbsp;&nbsp;
-            <button [disabled]="((orderData.invalid)||(isdisabled))" routerLink="/orderdisplay" class="btn btn-primary"
+            <span><b>Total Amount:&nbsp;&nbsp;{{total |currency:"INR":"symbol-narrow"}}</b></span> &nbsp;&nbsp;
+            <hr>
+
+            <button style="margin-left:10px;" [disabled]="((orderData.invalid)||(isdisabled))" routerLink="/vieworders" class="btn btn-primary"
                 data-bs-toggle="tooltip" data-bs-placement="bottom"
                 title="Add address and items into cart">OrderNow</button>
         </div>
-        <div class="col-sm-5">
-            <!-- Button trigger modal -->
-            <button style="margin-top: 50px;" type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#exampleModal">
-                Add Address
-            </button>
+    </div>
+</div>
+<div class="col-sm-5 " style="margin-top: 79px;position: relative">
+    <!-- Button trigger modal -->
+    <button style="margin-top: 50px;" type="button" class="btn btn-primary" data-toggle="modal"
+        data-target="#exampleModal">
+        Edit Address
+    </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add delivery address</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form #orderData="ngForm" (ngSubmit)="orderNow(orderData.value)">
-                                <input class="form-control" type="text" id="name" name="name" placeholder="Enter name"
-                                    required [(ngModel)]="addressdata.name" #name="ngModel"><br>
-                                <div class="error" *ngIf="!name?.valid && (name?.dirty ||name?.touched)">
-                                    Name is required.
-                                </div>
-                                <input class="form-control" type="text" name="address" placeholder="Enter address"
-                                    required [(ngModel)]="addressdata.address" #address="ngModel"><br>
-                                <div class="error" *ngIf="!address?.valid && (address?.dirty ||address?.touched)">
-                                    Address is required.
-                                </div>
-                                <input class="form-control" type="string" id="pincode" name="pincode" required
-                                    placeholder="Enter pincode" [(ngModel)]="addressdata.pincode"
-                                    #pincode="ngModel"><br>
-                                <div class="error" *ngIf="!pincode?.valid && (pincode?.dirty ||pincode?.touched)">
-                                    Pincode is required.
-                                </div>
-                                <input class="form-control" type="text" id="mobile" name="mobile" required
-                                    minlength="10" placeholder="Enter mobile number" [(ngModel)]="addressdata.mobile"
-                                    #mobile="ngModel"><br>
-                                <div class="error" *ngIf="!mobile?.valid && (mobile?.dirty ||mobile?.touched)">
-                                    Invalid mobile number.
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal"
-                                [disabled]="orderData.invalid" (click)="addAddress()">Add</button>
-                        </div>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add delivery address</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <div *ngIf="true">
-                <h4 style="text-align:left">Delivery address: </h4>
-                <p>{{addressdata.name}}</p>
-                <p>{{addressdata.address}}</p>
-                <p>{{addressdata.mobile}}</p>
-                <p>{{addressdata.pincode}}</p>
+                <div class="modal-body">
+                    <form #orderData="ngForm" (ngSubmit)="orderNow(orderData.value)">
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Enter name"
+                            required [(ngModel)]="addressdata.name" #name="ngModel"><br>
+                        <div class="error" *ngIf="!name?.valid && (name?.dirty ||name?.touched)">
+                            Name is required.
+                        </div>
+                        <input class="form-control" type="text" name="doorno" placeholder="Enter door Number"
+                            required [(ngModel)]="addressdata.doorno" #doorno="ngModel"><br>
+                        <div class="error" *ngIf="!doorno?.valid && (doorno?.dirty ||doorno?.touched)">
+                            Door number is required.
+                        </div>
+                        <input class="form-control" type="text" name="address" placeholder="Enter address"
+                            required [(ngModel)]="addressdata.address" #address="ngModel"><br>
+                        <div class="error" *ngIf="!address?.valid && (address?.dirty ||address?.touched)">
+                            Address is required.
+                        </div>
+                        <input class="form-control" type="string" id="pincode" name="pincode" required
+                            placeholder="Enter pincode" [(ngModel)]="addressdata.pincode"
+                            #pincode="ngModel"><br>
+                        <div class="error" *ngIf="!pincode?.valid && (pincode?.dirty ||pincode?.touched)">
+                            Pincode is required.
+                        </div>
+                        <input class="form-control" type="text" id="mobile" name="mobile" required
+                            minlength="10" placeholder="Enter mobile number" [(ngModel)]="addressdata.mobile"
+                            #mobile="ngModel"><br>
+                        <div class="error" *ngIf="!mobile?.valid && (mobile?.dirty ||mobile?.touched)">
+                            Invalid mobile number.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                        [disabled]="orderData.invalid" (click)="addAddress()">Add</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    <div *ngIf="true">
+        <h4 style="text-align:left">Delivery address: </h4>
+        <p><b>Name:</b>&nbsp;{{addressdata.name}}</p>
+        <p><b>Door No:</b>&nbsp;{{addressdata.doorno}}</p>
+        <p><b>Location:</b>&nbsp;{{addressdata.address}}</p>
+        <p><b>Mobile:</b>&nbsp;{{addressdata.mobile}}</p>
+        <p><b>Pincode:</b>&nbsp;{{addressdata.pincode}}</p>
+    </div>
+</div>    
+</div>  

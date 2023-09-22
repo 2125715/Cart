@@ -1,6 +1,7 @@
 export interface AddressData {
     name: string;
-    address: string;
+    doorno: string;
+    address:string;
     pincode: string;
     mobile: string;
 }
