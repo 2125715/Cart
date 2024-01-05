@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login() {
+    
     this.api.login(this.username, this.password).subscribe(
       (res) => {
         this.Message="Successfully verfied";

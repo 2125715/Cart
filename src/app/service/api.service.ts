@@ -12,8 +12,10 @@ import { CartService } from './cart.service';
 export class ApiService {
   @Input()
   username!: string;
+  private loggedInUserName:string | null=null;
 
   private userKey = 'current_user';
+  private isAuthenticated=false;
   constructor(private http: HttpClient, private cartService: CartService, private router: Router) { }
 
 
@@ -24,13 +26,21 @@ export class ApiService {
 
   login(username: string, password: string) {
     const body = { username, password };
+    this.loggedInUserName=username;
+    this.isAuthenticated=true;
     return this.http.post('http://localhost:5081/api/Login', body);
+    
 
   }
   logout() {
-    
+    this.loggedInUserName=null;
+    this.isAuthenticated=false;
     this.router.navigate(['/login'])
   }
+  isauthenticated():boolean{
+    return this.isAuthenticated;
+  }
+
 
   
   checkUsernameAvailability(username: string): Observable<boolean> {

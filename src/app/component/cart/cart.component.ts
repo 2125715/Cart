@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
 
 
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -20,6 +21,7 @@ export class CartComponent implements OnInit {
   constructor(private cartservice: CartService, private api: ApiService) { }
 
   ngOnInit(): void {
+   
     this.cartservice.getProducts()
 
       .subscribe((res: any) => {
@@ -31,6 +33,7 @@ export class CartComponent implements OnInit {
     
   }
 
+  
 
   get totalCartItems(): number {
     return this.cartservice.gettotalCartItems();
@@ -42,9 +45,11 @@ export class CartComponent implements OnInit {
     //this.loadCartData(username);
   }
   emptyCart() {
+   
     this.cartservice.removeAllCart();
     this.updateTotalItemCount();
    
+    this.cart=[];
   }
   dec(item: any) {
     

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map, reduce } from 'rxjs/operators';
 import { ApiService } from 'src/app/service/api.service';
 import { CartService } from 'src/app/service/cart.service';
+
 export class products {
   constructor(
     public id: number,
@@ -57,6 +58,7 @@ export class ProductsComponent implements OnInit {
 
 
   addtocart(item: any) {
+    
     this.cartService.addtoCart (item);
     item.addedToCart = true;
   }

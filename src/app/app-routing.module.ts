@@ -10,10 +10,11 @@ import { ProductsComponent } from './component/products/products.component';
 import { RegisterComponent } from './component/register/register.component';
 import { ViewordersComponent } from './component/vieworders/vieworders.component';
 import { HomeComponent } from './home/home.component';
+import { AuthguardService } from './service/authguard.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'products', component: ProductsComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'products', component: ProductsComponent ,canActivate:[AuthguardService] ,data:{protected:true}},
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   //{ path: 'orderdisplay', component: OrderdisplayComponent },
